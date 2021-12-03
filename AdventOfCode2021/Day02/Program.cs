@@ -4,13 +4,13 @@ namespace Day02
 {
     public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             //Task01();
             Task02();
         }
 
-        static void Task02()
+        private static void Task02()
         {
             var horizontalPosition = 0;
             var depth = 0;
@@ -49,7 +49,7 @@ namespace Day02
             Console.WriteLine($"Result: {horizontalPosition * depth}");
         }
 
-        static void Task01()
+        private static void Task01()
         {
             var horizontalPosition = 0;
             var depth = 0;

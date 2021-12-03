@@ -5,13 +5,13 @@ namespace Day01
 {
     public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             //Task01();
             Task02();
         }
 
-        static void Task02()
+        private static void Task02()
         {
             var numbers = new List<int>();
             var largerCount = 0;
@@ -67,7 +67,7 @@ namespace Day01
             Console.WriteLine("Larger Count: " + largerCount);
         }
 
-        static void Task01()
+        private static void Task01()
         {
             var largerCount = 0;
             var previous = int.Parse(Console.ReadLine());
