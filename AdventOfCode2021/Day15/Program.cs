@@ -1,23 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Wintellect.PowerCollections;
 
 namespace Day15
 {
-    public class Edge
-    {
-        public (int, int) First { get; set; }
-
-        public (int, int) Second { get; set; }
-
-        public int Weight { get; set; }
-    }
-
     public class Program
     {
         private static int[,] matrix;
-        private static Dictionary<(int, int), List<Edge>> edgesByNode;
+        private static Dictionary<(int, int), Dictionary<(int, int), int>> graph;
 
         public static void Main(string[] args)
         {
@@ -45,21 +35,20 @@ namespace Day15
             var end = (matrix.GetLength(0) - 1, matrix.GetLength(1) - 1);
 
             var distances = new Dictionary<(int, int), int>();
-            foreach (var node in edgesByNode.Keys)
+            foreach (var node in graph.Keys)
             {
                 distances[node] = int.MaxValue;
             }
             distances[start] = 0;
 
-            var queue = new OrderedBag<(int, int)>(
-                Comparer<(int, int)>.Create((f, s) => distances[f] - distances[s]));
+            var queue = new Queue<(int, int)>();
 
-            queue.Add(start);
+            queue.Enqueue(start);
 
             while (queue.Count > 0)
             {
-                var minNode = queue.RemoveFirst();
-                var children = edgesByNode[minNode];
+                var minNode = queue.Dequeue();
+                var children = graph[minNode];
 
                 if (minNode == end)
                 {
@@ -68,23 +57,17 @@ namespace Day15
 
                 foreach (var child in children)
                 {
-                    var childNode = child.First == minNode
-                        ? child.Second
-                        : child.First;
+                    var childNode = child.Key;
 
                     if (distances[childNode] == int.MaxValue)
                     {
-                        queue.Add(childNode);
+                        queue.Enqueue(childNode);
                     }
 
-                    var newDistance = child.Weight + distances[minNode];
+                    var newDistance = child.Value + distances[minNode];
                     if (newDistance < distances[childNode])
                     {
                         distances[childNode] = newDistance;
-
-                        queue = new OrderedBag<(int, int)>(
-                            queue,
-                            Comparer<(int, int)>.Create((f, s) => distances[f] - distances[s]));
                     }
                 }
             }
@@ -100,39 +83,29 @@ namespace Day15
         }
 
         private static void CreateGraph()
-        {          
-            edgesByNode = new Dictionary<(int, int), List<Edge>>();
+        {
+            graph = new Dictionary<(int, int), Dictionary<(int, int), int>>();
             for (int row = 0; row < matrix.GetLength(0); row++)
             {
                 for (int col = 0; col < matrix.GetLength(1); col++)
                 {
                     var node = (row, col);
 
-                    if (!edgesByNode.ContainsKey(node))
+                    if (!graph.ContainsKey(node))
                     {
-                        edgesByNode.Add(node, new List<Edge>());
+                        graph.Add(node, new Dictionary<(int, int), int>());
                     }
 
                     // down
                     if (row < matrix.GetLength(0) - 1)
                     {
-                        edgesByNode[node].Add(new Edge
-                        {
-                            First = node,
-                            Second = (row + 1, col),
-                            Weight = matrix[row + 1, col]
-                        });
+                        graph[node].Add((row + 1, col), matrix[row + 1, col]);
                     }
 
                     // right
                     if (col < matrix.GetLength(1) - 1)
                     {
-                        edgesByNode[node].Add(new Edge
-                        {
-                            First = node,
-                            Second = (row, col + 1),
-                            Weight = matrix[row, col + 1]
-                        });
+                        graph[node].Add((row, col + 1), matrix[row, col + 1]);
                     }
                 }
             }
