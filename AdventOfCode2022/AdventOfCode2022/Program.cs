@@ -7,10 +7,10 @@
         public static void Main(string[] args)
         {
             //Day01.Task01();
-            Day01.Task02();
+            //Day01.Task02();
 
             //Day02.Task01();
-            //Day02.Task02();
+            Day02.Task02();
 
             //Day03.Task01();
             //Day03.Task02();
