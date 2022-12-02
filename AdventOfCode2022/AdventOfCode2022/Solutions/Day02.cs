@@ -4,11 +4,11 @@
     {
         public static void Task01()
         {
-            var shapesScores = new Dictionary<string, int>
+            var shapesScores = new Dictionary<char, int>
             {
-                { "X", 1 }, // rock
-                { "Y", 2 }, // paper
-                { "Z", 3 }, // scissors
+                { 'X', 1 }, // rock
+                { 'Y', 2 }, // paper
+                { 'Z', 3 }, // scissors
             };
             var gameScores = new Dictionary<string, int>
             {
@@ -37,7 +37,7 @@
                 }
 
                 totalScore += gameScores[game];
-                totalScore += shapesScores[game[game.Length - 1].ToString()];
+                totalScore += shapesScores[game[^1]];
             }
 
             Console.WriteLine(totalScore);
