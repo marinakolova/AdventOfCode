@@ -9,11 +9,11 @@
             //Day01.Task01();
             //Day01.Task02();
 
-            Day02.Task01();
+            //Day02.Task01();
             //Day02.Task02();
 
             //Day03.Task01();
-            //Day03.Task02();
+            Day03.Task02();
 
             //Day04.Task01();
             //Day04.Task02();
