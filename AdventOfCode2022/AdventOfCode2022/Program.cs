@@ -28,10 +28,10 @@
             //Day07.Task02();
 
             //Day08.Task01();
-            Day08.Task02();
+            //Day08.Task02();
 
             //Day09.Task01();
-            //Day09.Task02();
+            Day09.Task02();
 
             //Day10.Task01();
             //Day10.Task02();
