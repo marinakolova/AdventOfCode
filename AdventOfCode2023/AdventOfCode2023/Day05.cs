@@ -5,21 +5,9 @@ namespace AdventOfCode2023
 {
     class Seed // for Task01
     {
-        public BigInteger Id { get; set; }
+        public BigInteger Number { get; set; }
 
-        public BigInteger Soil { get; set; }
-
-        public BigInteger Fertilizer { get; set; }
-
-        public BigInteger Water { get; set; }
-
-        public BigInteger Light { get; set; }
-
-        public BigInteger Temperature { get; set; }
-
-        public BigInteger Humidity { get; set; }
-
-        public BigInteger Location { get; set; }
+        public string MapSource { get; set; }
     }
 
     class Range // for Task02
@@ -44,239 +32,44 @@ namespace AdventOfCode2023
             {
                 seeds.Add(new Seed
                 {
-                    Id = seedNumber,
-                    Soil = seedNumber,
-                    Fertilizer = seedNumber,
-                    Water = seedNumber,
-                    Light = seedNumber,
-                    Temperature = seedNumber,
-                    Humidity = seedNumber,
-                    Location = seedNumber,
+                    Number = seedNumber,
+                    MapSource = "seed",
                 });
             }
             Console.ReadLine();
 
             // read seed-to-soil map
-            Console.ReadLine();
-            while (true)
-            {
-                var line = Console.ReadLine();
-
-                if (line == "end" || string.IsNullOrEmpty(line) || string.IsNullOrWhiteSpace(line))
-                {
-                    break;
-                }
-
-                var mapLine = line.Split().Select(BigInteger.Parse).ToList();
-                var destinationRangeStart = mapLine[0];
-                var sourceRangeStart = mapLine[1];
-                var rangeLength = mapLine[2];
-
-                var seedsToBeUpdated = seeds.Where(s =>
-                        s.Id >= sourceRangeStart &&
-                        s.Id < sourceRangeStart + rangeLength)
-                    .ToList();
-
-                foreach (var seedToBeUpdated in seedsToBeUpdated)
-                {
-                    var i = seedToBeUpdated.Id - sourceRangeStart;
-                    var destinationValue = destinationRangeStart + i;
-
-                    var index = seeds.IndexOf(seedToBeUpdated);
-
-                    //Seed, soil, fertilizer, water, light, temperature, humidity, location
-                    seeds[index].Soil = destinationValue;
-                    seeds[index].Fertilizer = destinationValue;
-                    seeds[index].Water = destinationValue;
-                    seeds[index].Light = destinationValue;
-                    seeds[index].Temperature = destinationValue;
-                    seeds[index].Humidity = destinationValue;
-                    seeds[index].Location = destinationValue;
-                }
-            }
+            ReadMapAndUpdateSeedNumbers(ref seeds);
 
             // read soil-to-fertilizer map
-            Console.ReadLine();
-            while (true)
-            {
-                var line = Console.ReadLine();
-
-                if (line == "end" || string.IsNullOrEmpty(line) || string.IsNullOrWhiteSpace(line))
-                {
-                    break;
-                }
-
-                var mapLine = line.Split().Select(BigInteger.Parse).ToList();
-                var destinationRangeStart = mapLine[0];
-                var sourceRangeStart = mapLine[1];
-                var rangeLength = mapLine[2];
-
-                var seedsToBeUpdated = seeds.Where(s =>
-                        s.Soil >= sourceRangeStart &&
-                        s.Soil < sourceRangeStart + rangeLength)
-                    .ToList();
-
-                foreach (var seedToBeUpdated in seedsToBeUpdated)
-                {
-                    var i = seedToBeUpdated.Soil - sourceRangeStart;
-                    var destinationValue = destinationRangeStart + i;
-
-                    var index = seeds.IndexOf(seedToBeUpdated);
-
-                    //Seed, soil, fertilizer, water, light, temperature, humidity, location
-                    seeds[index].Fertilizer = destinationValue;
-                    seeds[index].Water = destinationValue;
-                    seeds[index].Light = destinationValue;
-                    seeds[index].Temperature = destinationValue;
-                    seeds[index].Humidity = destinationValue;
-                    seeds[index].Location = destinationValue;
-                }
-            }
+            ReadMapAndUpdateSeedNumbers(ref seeds);
 
             // read fertilizer-to-water map
-            Console.ReadLine();
-            while (true)
-            {
-                var line = Console.ReadLine();
-
-                if (line == "end" || string.IsNullOrEmpty(line) || string.IsNullOrWhiteSpace(line))
-                {
-                    break;
-                }
-
-                var mapLine = line.Split().Select(BigInteger.Parse).ToList();
-                var destinationRangeStart = mapLine[0];
-                var sourceRangeStart = mapLine[1];
-                var rangeLength = mapLine[2];
-
-                var seedsToBeUpdated = seeds.Where(s =>
-                        s.Fertilizer >= sourceRangeStart &&
-                        s.Fertilizer < sourceRangeStart + rangeLength)
-                    .ToList();
-
-                foreach (var seedToBeUpdated in seedsToBeUpdated)
-                {
-                    var i = seedToBeUpdated.Fertilizer - sourceRangeStart;
-                    var destinationValue = destinationRangeStart + i;
-
-                    var index = seeds.IndexOf(seedToBeUpdated);
-
-                    //Seed, soil, fertilizer, water, light, temperature, humidity, location
-                    seeds[index].Water = destinationValue;
-                    seeds[index].Light = destinationValue;
-                    seeds[index].Temperature = destinationValue;
-                    seeds[index].Humidity = destinationValue;
-                    seeds[index].Location = destinationValue;
-                }
-            }
+            ReadMapAndUpdateSeedNumbers(ref seeds);
 
             // read water-to-light map
-            Console.ReadLine();
-            while (true)
-            {
-                var line = Console.ReadLine();
-
-                if (line == "end" || string.IsNullOrEmpty(line) || string.IsNullOrWhiteSpace(line))
-                {
-                    break;
-                }
-
-                var mapLine = line.Split().Select(BigInteger.Parse).ToList();
-                var destinationRangeStart = mapLine[0];
-                var sourceRangeStart = mapLine[1];
-                var rangeLength = mapLine[2];
-
-                var seedsToBeUpdated = seeds.Where(s =>
-                        s.Water >= sourceRangeStart &&
-                        s.Water < sourceRangeStart + rangeLength)
-                    .ToList();
-
-                foreach (var seedToBeUpdated in seedsToBeUpdated)
-                {
-                    var i = seedToBeUpdated.Water - sourceRangeStart;
-                    var destinationValue = destinationRangeStart + i;
-
-                    var index = seeds.IndexOf(seedToBeUpdated);
-
-                    //Seed, soil, fertilizer, water, light, temperature, humidity, location
-                    seeds[index].Light = destinationValue;
-                    seeds[index].Temperature = destinationValue;
-                    seeds[index].Humidity = destinationValue;
-                    seeds[index].Location = destinationValue;
-                }
-            }
+            ReadMapAndUpdateSeedNumbers(ref seeds);
 
             // read light-to-temperature map
-            Console.ReadLine();
-            while (true)
-            {
-                var line = Console.ReadLine();
-
-                if (line == "end" || string.IsNullOrEmpty(line) || string.IsNullOrWhiteSpace(line))
-                {
-                    break;
-                }
-
-                var mapLine = line.Split().Select(BigInteger.Parse).ToList();
-                var destinationRangeStart = mapLine[0];
-                var sourceRangeStart = mapLine[1];
-                var rangeLength = mapLine[2];
-
-                var seedsToBeUpdated = seeds.Where(s =>
-                        s.Light >= sourceRangeStart &&
-                        s.Light < sourceRangeStart + rangeLength)
-                    .ToList();
-
-                foreach (var seedToBeUpdated in seedsToBeUpdated)
-                {
-                    var i = seedToBeUpdated.Light - sourceRangeStart;
-                    var destinationValue = destinationRangeStart + i;
-
-                    var index = seeds.IndexOf(seedToBeUpdated);
-
-                    //Seed, soil, fertilizer, water, light, temperature, humidity, location
-                    seeds[index].Temperature = destinationValue;
-                    seeds[index].Humidity = destinationValue;
-                    seeds[index].Location = destinationValue;
-                }
-            }
+            ReadMapAndUpdateSeedNumbers(ref seeds);
 
             // read temperature-to-humidity map
-            Console.ReadLine();
-            while (true)
-            {
-                var line = Console.ReadLine();
-
-                if (line == "end" || string.IsNullOrEmpty(line) || string.IsNullOrWhiteSpace(line))
-                {
-                    break;
-                }
-
-                var mapLine = line.Split().Select(BigInteger.Parse).ToList();
-                var destinationRangeStart = mapLine[0];
-                var sourceRangeStart = mapLine[1];
-                var rangeLength = mapLine[2];
-
-                var seedsToBeUpdated = seeds.Where(s =>
-                        s.Temperature >= sourceRangeStart &&
-                        s.Temperature < sourceRangeStart + rangeLength)
-                    .ToList();
-
-                foreach (var seedToBeUpdated in seedsToBeUpdated)
-                {
-                    var i = seedToBeUpdated.Temperature - sourceRangeStart;
-                    var destinationValue = destinationRangeStart + i;
-
-                    var index = seeds.IndexOf(seedToBeUpdated);
-
-                    //Seed, soil, fertilizer, water, light, temperature, humidity, location
-                    seeds[index].Humidity = destinationValue;
-                    seeds[index].Location = destinationValue;
-                }
-            }
+            ReadMapAndUpdateSeedNumbers(ref seeds);
 
             // read humidity-to-location map
-            Console.ReadLine();
+            ReadMapAndUpdateSeedNumbers(ref seeds);
+
+            var minLocation = seeds.Select(s => s.Number).ToList().Min();
+            Console.WriteLine(minLocation);
+        }
+
+        private static void ReadMapAndUpdateSeedNumbers(ref List<Seed> seeds) // for Task01
+        {
+            var map = Console.ReadLine();
+            var mapName = map.Split()[0].Split("-");
+            var mapSource = mapName[0];
+            var mapDestination = mapName[2];
+
             while (true)
             {
                 var line = Console.ReadLine();
@@ -292,24 +85,22 @@ namespace AdventOfCode2023
                 var rangeLength = mapLine[2];
 
                 var seedsToBeUpdated = seeds.Where(s =>
-                        s.Humidity >= sourceRangeStart &&
-                        s.Humidity < sourceRangeStart + rangeLength)
+                        s.MapSource != mapDestination &&
+                        s.Number >= sourceRangeStart &&
+                        s.Number < sourceRangeStart + rangeLength)
                     .ToList();
 
                 foreach (var seedToBeUpdated in seedsToBeUpdated)
                 {
-                    var i = seedToBeUpdated.Humidity - sourceRangeStart;
+                    var i = seedToBeUpdated.Number - sourceRangeStart;
                     var destinationValue = destinationRangeStart + i;
 
                     var index = seeds.IndexOf(seedToBeUpdated);
 
-                    //Seed, soil, fertilizer, water, light, temperature, humidity, location
-                    seeds[index].Location = destinationValue;
+                    seeds[index].Number = destinationValue;
+                    seeds[index].MapSource = mapDestination;
                 }
             }
-
-            var minLocation = seeds.Select(s => s.Location).ToList().Min();
-            Console.WriteLine(minLocation);
         }
 
         public static void Task02()
@@ -359,7 +150,7 @@ namespace AdventOfCode2023
             Console.WriteLine(minLocation);
         }
 
-        private static void ReadMapAndUpdateRanges(ref List<Range> ranges)
+        private static void ReadMapAndUpdateRanges(ref List<Range> ranges) // for Task02
         {
             var map = Console.ReadLine();
             var mapName = map.Split()[0].Split("-");
