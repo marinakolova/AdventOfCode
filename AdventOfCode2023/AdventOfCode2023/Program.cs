@@ -17,13 +17,13 @@
             //Day04.Task02();
 
             //Day05.Task01();
-            Day05.Task02();
+            //Day05.Task02();
 
             //Day06.Task01();
             //Day06.Task02();
 
             //Day07.Task01();
-            //Day07.Task02();
+            Day07.Task02();
 
             //Day08.Task01();
             //Day08.Task02();
