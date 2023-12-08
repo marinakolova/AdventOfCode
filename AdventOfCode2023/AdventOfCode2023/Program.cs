@@ -23,10 +23,10 @@
             //Day06.Task02();
 
             //Day07.Task01();
-            Day07.Task02();
+            //Day07.Task02();
 
             //Day08.Task01();
-            //Day08.Task02();
+            Day08.Task02();
 
             //Day09.Task01();
             //Day09.Task02();
