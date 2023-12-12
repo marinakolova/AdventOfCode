@@ -35,10 +35,10 @@
             //Day10.Task02();
 
             //Day11.Task01();
-            Day11.Task02();
+            //Day11.Task02();
 
             //Day12.Task01();
-            //Day12.Task02();
+            Day12.Task02();
 
             //Day13.Task01();
             //Day13.Task02();
