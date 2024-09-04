@@ -1,6 +1,6 @@
-﻿namespace AdventOfCode2023
+﻿namespace AdventOfCode202x
 {
-    public static class Day13
+    public static class Day02
     {
         public static void Task01()
         {
