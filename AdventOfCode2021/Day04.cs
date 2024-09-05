@@ -2,76 +2,17 @@
 {
     public static class Day04
     {
-        public static void Task02()
+        public static void Task01(string input)
         {
-            var numbers = Console.ReadLine()
+            var inputLines = input.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries).ToList();
+
+            var numbers = inputLines[0]
                 .Split(",", StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse)
                 .ToArray();
 
-            var boards = ReadBoardsInput();
-
-            var winningBoards = new List<int[][]>();
-            var lastWinningNumber = -1;
-
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                var currentNum = numbers[i];
-
-                for (int board = 0; board < boards.Count; board++)
-                {
-                    for (int row = 0; row < 5; row++)
-                    {
-                        for (int col = 0; col < 5; col++)
-                        {
-                            if (boards[board][row][col] == currentNum)
-                            {
-                                boards[board][row][col] = -1;
-                            }
-                        }
-                    }
-                }
-
-                for (int boardIndex = 0; boardIndex < boards.Count; boardIndex++)
-                {
-                    var wins = CheckIfBoardWins(boards[boardIndex]);
-                    if (wins)
-                    {
-                        lastWinningNumber = currentNum;
-                        winningBoards.Add(boards[boardIndex]);
-                        boards.RemoveAt(boardIndex);
-                        boardIndex -= 1;
-                    }
-                }
-            }
-
-            var lastWinningBoard = winningBoards[winningBoards.Count - 1];
-            var lastWinningBoardSum = 0;
-            for (int row = 0; row < 5; row++)
-            {
-                for (int col = 0; col < 5; col++)
-                {
-                    if (lastWinningBoard[row][col] != -1)
-                    {
-                        lastWinningBoardSum += lastWinningBoard[row][col];
-                    }
-                }
-            }
-
-            var result = lastWinningBoardSum * lastWinningNumber;
-            Console.WriteLine("Last Winning board sum: " + lastWinningBoardSum);
-            Console.WriteLine("Last Winning number: " + lastWinningNumber);
-            Console.WriteLine("Result: " + result);
-        }
-
-        public static void Task01()
-        {
-            var numbers = Console.ReadLine()
-                .Split(",", StringSplitOptions.RemoveEmptyEntries)
-                .Select(int.Parse)
-                .ToArray();
-
-            var boards = ReadBoardsInput();
+            inputLines.RemoveAt(0);
+            var boards = ReadBoardsInput(inputLines);
 
             var winningBoard = new int[5][];
             var winningNumber = -1;
@@ -144,6 +85,71 @@
             Console.WriteLine("Result: " + result);
         }
 
+        public static void Task02(string input)
+        {
+            var inputLines = input.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries).ToList();
+
+            var numbers = inputLines[0]
+                .Split(",", StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)
+                .ToArray();
+
+            inputLines.RemoveAt(0);
+            var boards = ReadBoardsInput(inputLines);
+
+            var winningBoards = new List<int[][]>();
+            var lastWinningNumber = -1;
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                var currentNum = numbers[i];
+
+                for (int board = 0; board < boards.Count; board++)
+                {
+                    for (int row = 0; row < 5; row++)
+                    {
+                        for (int col = 0; col < 5; col++)
+                        {
+                            if (boards[board][row][col] == currentNum)
+                            {
+                                boards[board][row][col] = -1;
+                            }
+                        }
+                    }
+                }
+
+                for (int boardIndex = 0; boardIndex < boards.Count; boardIndex++)
+                {
+                    var wins = CheckIfBoardWins(boards[boardIndex]);
+                    if (wins)
+                    {
+                        lastWinningNumber = currentNum;
+                        winningBoards.Add(boards[boardIndex]);
+                        boards.RemoveAt(boardIndex);
+                        boardIndex -= 1;
+                    }
+                }
+            }
+
+            var lastWinningBoard = winningBoards[winningBoards.Count - 1];
+            var lastWinningBoardSum = 0;
+            for (int row = 0; row < 5; row++)
+            {
+                for (int col = 0; col < 5; col++)
+                {
+                    if (lastWinningBoard[row][col] != -1)
+                    {
+                        lastWinningBoardSum += lastWinningBoard[row][col];
+                    }
+                }
+            }
+
+            var result = lastWinningBoardSum * lastWinningNumber;
+            Console.WriteLine("Last Winning board sum: " + lastWinningBoardSum);
+            Console.WriteLine("Last Winning number: " + lastWinningNumber);
+            Console.WriteLine("Result: " + result);
+        }
+
         private static bool CheckIfBoardWins(int[][] board)
         {
             var hasWinningRow = false;
@@ -195,22 +201,14 @@
             return false;
         }
 
-        private static List<int[][]> ReadBoardsInput()
+        private static List<int[][]> ReadBoardsInput(List<string> boardRows)
         {
             var boards = new List<int[][]>();
 
-            while (true)
+            for (int i = 0; i < boardRows.Count; i += 5)
             {
-                var inputRow = Console.ReadLine();
-                if (string.IsNullOrEmpty(inputRow))
-                {
-                    continue;
-                }
-                if (inputRow == "end")
-                {
-                    break;
-                }
-
+                var inputRow = boardRows[i];
+                
                 boards.Add(new int[5][]);
                 var currentBoardIndex = boards.Count - 1;
 
@@ -225,11 +223,11 @@
                 {
                     boards[currentBoardIndex][currentRowIndex][col] = rowNums[col];
                 }
-                for (int i = 1; i < 5; i++)
+                for (int nextRow = 1; nextRow < 5; nextRow++)
                 {
                     currentRowIndex++;
                     boards[currentBoardIndex][currentRowIndex] = new int[5];
-                    inputRow = Console.ReadLine();
+                    inputRow = boardRows[i + nextRow];
                     rowNums = inputRow
                         .Split(" ", StringSplitOptions.RemoveEmptyEntries)
                         .Select(int.Parse)

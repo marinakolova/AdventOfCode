@@ -6,19 +6,19 @@ namespace AdventOfCode2021
     {
         private static Dictionary<string, List<string>> graph;
 
-        public static void Task02()
+        public static void Task01(string input)
         {
-            graph = ReadInput();
+            graph = ReadInput(input.Split(Environment.NewLine).ToList());
 
-            var result = FindPathsCount("start", ImmutableHashSet.Create<string>("start"), false, true);
+            var result = FindPathsCount("start", ImmutableHashSet.Create<string>("start"), false, false);
             Console.WriteLine("Paths: " + result);
         }
 
-        public static void Task01()
+        public static void Task02(string input)
         {
-            graph = ReadInput();
+            graph = ReadInput(input.Split(Environment.NewLine).ToList());
 
-            var result = FindPathsCount("start", ImmutableHashSet.Create<string>("start"), false, false);
+            var result = FindPathsCount("start", ImmutableHashSet.Create<string>("start"), false, true);
             Console.WriteLine("Paths: " + result);
         }
 
@@ -49,20 +49,13 @@ namespace AdventOfCode2021
             return pathsCount;
         }
 
-        private static Dictionary<string, List<string>> ReadInput()
+        private static Dictionary<string, List<string>> ReadInput(List<string> inputLines)
         {
             var graph = new Dictionary<string, List<string>>();
 
-            while (true)
+            foreach (var inputLine in inputLines)
             {
-                var input = Console.ReadLine();
-
-                if (input == "end")
-                {
-                    break;
-                }
-
-                var inputParts = input.Split("-");
+                var inputParts = inputLine.Split("-");
                 var firstEdge = inputParts[0];
                 var secondEdge = inputParts[1];
 

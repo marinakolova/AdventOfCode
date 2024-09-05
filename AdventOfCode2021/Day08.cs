@@ -2,20 +2,41 @@
 {
     public static class Day08
     {
-        public static void Task02()
+        public static void Task01(string input)
         {
+            var inputLines = input.Split(Environment.NewLine).ToList();
+            
             var result = 0;
 
-            while (true)
+            foreach (var line in inputLines)
             {
-                var input = Console.ReadLine();
+                var inputParts = line.Split(" | ");
+                var output = inputParts[1].Split(" ");
 
-                if (input == "end")
+                for (int i = 0; i < output.Length; i++)
                 {
-                    break;
+                    if (output[i].Length == 2
+                        || output[i].Length == 3
+                        || output[i].Length == 4
+                        || output[i].Length == 7)
+                    {
+                        result++;
+                    }
                 }
+            }
 
-                var inputParts = input.Split(" | ");
+            Console.WriteLine("Result: " + result);
+        }
+
+        public static void Task02(string input)
+        {
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
+            var result = 0;
+
+            foreach (var line in inputLines)
+            {
+                var inputParts = line.Split(" | ");
                 var uniqueSignalPatterns = inputParts[0].Split(" ").Select(x => x.ToHashSet()).ToArray();
                 var output = inputParts[1].Split(" ");
 
@@ -73,37 +94,6 @@
                     );
 
                 result += output.Aggregate(0, (n, digit) => n * 10 + (Enumerable.Range(0, 10).Single(i => digits[i].SetEquals(digit))));
-            }
-
-            Console.WriteLine("Result: " + result);
-        }
-
-        public static void Task01()
-        {
-            var result = 0;
-
-            while (true)
-            {
-                var input = Console.ReadLine();
-
-                if (input == "end")
-                {
-                    break;
-                }
-
-                var inputParts = input.Split(" | ");
-                var output = inputParts[1].Split(" ");
-
-                for (int i = 0; i < output.Length; i++)
-                {
-                    if (output[i].Length == 2
-                        || output[i].Length == 3
-                        || output[i].Length == 4
-                        || output[i].Length == 7)
-                    {
-                        result++;
-                    }
-                }
             }
 
             Console.WriteLine("Result: " + result);

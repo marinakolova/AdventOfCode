@@ -5,16 +5,18 @@
         private static int[,] matrix;
         private static Dictionary<(int, int), Dictionary<(int, int), int>> graph;
 
-        public static void Task02()
+        public static void Task01(string input)
         {
-            ReadInputEnlarged();
+            var inputLines = input.Split(Environment.NewLine).ToList();
+            ReadInput(inputLines);
             CreateGraph();
             Dijkstra();
         }
 
-        public static void Task01()
+        public static void Task02(string input)
         {
-            ReadInput();
+            var inputLines = input.Split(Environment.NewLine).ToList();
+            ReadInputEnlarged(inputLines);
             CreateGraph();
             Dijkstra();
         }
@@ -101,40 +103,40 @@
             }
         }
 
-        private static void ReadInput()
+        private static void ReadInput(List<string> inputLines)
         {
-            var input = Console.ReadLine();
+            var inputLine = inputLines[0];
 
-            matrix = new int[input.Length, input.Length];
-            for (int i = 0; i < input.Length; i++)
+            matrix = new int[inputLine.Length, inputLine.Length];
+            for (int i = 0; i < inputLine.Length; i++)
             {
-                matrix[0, i] = int.Parse(input[i].ToString());
+                matrix[0, i] = int.Parse(inputLine[i].ToString());
             }
             for (int row = 1; row < matrix.GetLength(0); row++)
             {
-                input = Console.ReadLine();
+                inputLine = inputLines[row];
                 for (int col = 0; col < matrix.GetLength(1); col++)
                 {
-                    matrix[row, col] = int.Parse(input[col].ToString());
+                    matrix[row, col] = int.Parse(inputLine[col].ToString());
                 }
             }
         }
 
-        private static void ReadInputEnlarged()
+        private static void ReadInputEnlarged(List<string> inputLines)
         {
-            var input = Console.ReadLine();
-            var initialLength = input.Length;
+            var inputLine = inputLines[0];
+            var initialLength = inputLine.Length;
 
             matrix = new int[initialLength * 5, initialLength * 5];
             for (int row = 0; row < initialLength; row++)
             {
                 if (row != 0)
                 {
-                    input = Console.ReadLine();
+                    inputLine = inputLines[row];
                 }
                 for (int col = 0; col < initialLength; col++)
                 {
-                    var element = int.Parse(input[col].ToString());
+                    var element = int.Parse(inputLine[col].ToString());
                     matrix[row, col] = element;
 
                     for (int i = 1; i < 5; i++)

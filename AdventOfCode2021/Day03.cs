@@ -2,21 +2,61 @@
 {
     public static class Day03
     {
-        public static void Task02()
+        public static void Task01(string input)
         {
-            var inputLines = new List<string>();
+            var inputLines = input.Split(Environment.NewLine).ToList();
 
-            while (true)
+            var bits = new List<List<int>>();
+
+            foreach (string line in inputLines)
             {
-                var inputLine = Console.ReadLine();
-
-                if (inputLine == "end")
+                for (int i = 0; i < line.Length; i++)
                 {
-                    break;
-                }
+                    if (bits.Count <= i)
+                    {
+                        bits.Add(new List<int>());
+                        bits[i].Add(0);
+                        bits[i].Add(0);
+                    }
 
-                inputLines.Add(inputLine);
+                    switch (line[i])
+                    {
+                        case '0':
+                            bits[i][0] += 1;
+                            break;
+
+                        case '1':
+                            bits[i][1] += 1;
+                            break;
+                    }
+                }
             }
+
+            var gammaRate = "";
+            var epsilonRate = "";
+
+            for (int i = 0; i < bits.Count; i++)
+            {
+                if (bits[i][0] > bits[i][1])
+                {
+                    gammaRate += "0";
+                    epsilonRate += "1";
+                }
+                else
+                {
+                    gammaRate += "1";
+                    epsilonRate += "0";
+                }
+            }
+
+            var powerConsumption = Convert.ToInt32(gammaRate, 2) * Convert.ToInt32(epsilonRate, 2);
+
+            Console.WriteLine("Power Consumption: " + powerConsumption);
+        }
+
+        public static void Task02(string input)
+        {
+            var inputLines = input.Split(Environment.NewLine).ToList();
 
             var filteredByMostCommonBit = inputLines;
             var position = 0;
@@ -95,63 +135,6 @@
             var lifeSupportRating = Convert.ToInt32(oxygenGeneratorRating, 2) * Convert.ToInt32(carbonScrubberRating, 2);
 
             Console.WriteLine("Life support rating: " + lifeSupportRating);
-        }
-
-        public static void Task01()
-        {
-            var bits = new List<List<int>>();
-
-            while (true)
-            {
-                var input = Console.ReadLine();
-
-                if (input == "end")
-                {
-                    break;
-                }
-
-                for (int i = 0; i < input.Length; i++)
-                {
-                    if (bits.Count <= i)
-                    {
-                        bits.Add(new List<int>());
-                        bits[i].Add(0);
-                        bits[i].Add(0);
-                    }
-
-                    switch (input[i])
-                    {
-                        case '0':
-                            bits[i][0] += 1;
-                            break;
-
-                        case '1':
-                            bits[i][1] += 1;
-                            break;
-                    }
-                }
-            }
-
-            var gammaRate = "";
-            var epsilonRate = "";
-
-            for (int i = 0; i < bits.Count; i++)
-            {
-                if (bits[i][0] > bits[i][1])
-                {
-                    gammaRate += "0";
-                    epsilonRate += "1";
-                }
-                else
-                {
-                    gammaRate += "1";
-                    epsilonRate += "0";
-                }
-            }
-
-            var powerConsumption = Convert.ToInt32(gammaRate, 2) * Convert.ToInt32(epsilonRate, 2);
-
-            Console.WriteLine("Power Consumption: " + powerConsumption);
         }
     }
 }

@@ -4,19 +4,52 @@
     {
         private static List<HashSet<ValueTuple<int, int>>> basins = new List<HashSet<ValueTuple<int, int>>>();
 
-        public static void Task02()
+        public static void Task01(string input)
         {
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
             var matrix = new List<int[]>();
 
-            while (true)
+            foreach (var inputLine in inputLines)
             {
-                var inputLine = Console.ReadLine();
-
-                if (inputLine == "end")
+                matrix.Add(new int[inputLine.Length]);
+                for (int i = 0; i < inputLine.Length; i++)
                 {
-                    break;
+                    matrix[matrix.Count - 1][i] = int.Parse(inputLine[i].ToString());
                 }
+            }
 
+            var riskLevel = 0;
+
+            for (int row = 0; row < matrix.Count; row++)
+            {
+                for (int col = 0; col < matrix[0].Length; col++)
+                {
+                    var element = matrix[row][col];
+
+                    var up = row != 0 ? matrix[row - 1][col] : int.MaxValue;
+                    var down = row != matrix.Count - 1 ? matrix[row + 1][col] : int.MaxValue;
+                    var left = col != 0 ? matrix[row][col - 1] : int.MaxValue;
+                    var right = col != matrix[0].Length - 1 ? matrix[row][col + 1] : int.MaxValue;
+
+                    if (element < up && element < down && element < left && element < right)
+                    {
+                        riskLevel += (element + 1);
+                    }
+                }
+            }
+
+            Console.WriteLine("Risk Level: " + riskLevel);
+        }
+
+        public static void Task02(string input)
+        {
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
+            var matrix = new List<int[]>();
+
+            foreach (var inputLine in inputLines)
+            {
                 matrix.Add(new int[inputLine.Length]);
                 for (int i = 0; i < inputLine.Length; i++)
                 {
@@ -250,49 +283,6 @@
             }
 
             return;
-        }
-
-        public static void Task01()
-        {
-            var matrix = new List<int[]>();
-
-            while (true)
-            {
-                var inputLine = Console.ReadLine();
-
-                if (inputLine == "end")
-                {
-                    break;
-                }
-
-                matrix.Add(new int[inputLine.Length]);
-                for (int i = 0; i < inputLine.Length; i++)
-                {
-                    matrix[matrix.Count - 1][i] = int.Parse(inputLine[i].ToString());
-                }
-            }
-
-            var riskLevel = 0;
-
-            for (int row = 0; row < matrix.Count; row++)
-            {
-                for (int col = 0; col < matrix[0].Length; col++)
-                {
-                    var element = matrix[row][col];
-
-                    var up = row != 0 ? matrix[row - 1][col] : int.MaxValue;
-                    var down = row != matrix.Count - 1 ? matrix[row + 1][col] : int.MaxValue;
-                    var left = col != 0 ? matrix[row][col - 1] : int.MaxValue;
-                    var right = col != matrix[0].Length - 1 ? matrix[row][col + 1] : int.MaxValue;
-
-                    if (element < up && element < down && element < left && element < right)
-                    {
-                        riskLevel += (element + 1);
-                    }
-                }
-            }
-
-            Console.WriteLine("Risk Level: " + riskLevel);
         }
     }
 }

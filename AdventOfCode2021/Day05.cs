@@ -4,15 +4,15 @@
     {
         private static int[][] field;
 
-        public static void Task02()
+        public static void Task01(string input)
         {
-            ReadInput(false);
+            ReadInput(input, true);
             CountOverlaps();
         }
 
-        public static void Task01()
+        public static void Task02(string input)
         {
-            ReadInput(true);
+            ReadInput(input, false);
             CountOverlaps();
         }
 
@@ -34,7 +34,7 @@
             Console.WriteLine("Overlaps Count: " + overlapsCount);
         }
 
-        private static void ReadInput(bool skipDiagonals)
+        private static void ReadInput(string input, bool skipDiagonals)
         {
             field = new int[1000][];
             for (int row = 0; row < 1000; row++)
@@ -46,16 +46,9 @@
                 }
             }
 
-            while (true)
+            foreach (var inputLine in input.Split(Environment.NewLine).ToList())
             {
-                var input = Console.ReadLine();
-
-                if (input == "end")
-                {
-                    break;
-                }
-
-                var coordinates = input.Split(" -> ", StringSplitOptions.RemoveEmptyEntries);
+                var coordinates = inputLine.Split(" -> ", StringSplitOptions.RemoveEmptyEntries);
                 var firstEnds = coordinates[0]
                     .Split(",", StringSplitOptions.RemoveEmptyEntries)
                     .Select(int.Parse)

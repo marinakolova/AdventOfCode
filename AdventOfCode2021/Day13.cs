@@ -4,20 +4,25 @@
     {
         private static List<List<int>> paper = new List<List<int>>();
 
-        private static void Task02()
+        public static void Task01(string input)
         {
-            ReadPaperInput();
+            var inputLines = input.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries).ToList();
+            ReadPaperInput(inputLines);
 
-            while (true)
+            FoldPaper(inputLines.First(x => x.StartsWith("fold")));
+
+            CountDots();
+        }
+
+        public static void Task02(string input)
+        {
+            var inputLines = input.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries).ToList();
+            ReadPaperInput(inputLines);
+
+            var foldingInstructions = inputLines.Where(x => x.StartsWith("fold")).ToList();
+            foreach (var foldingInstruction in foldingInstructions)
             {
-                var input = Console.ReadLine();
-
-                if (input == "end")
-                {
-                    break;
-                }
-
-                FoldPaper(input);
+                FoldPaper(foldingInstruction);
             }
 
             // what is printed on the console looks like 8 capital letters -> the answear
@@ -36,16 +41,6 @@
                 }
                 Console.WriteLine();
             }
-        }
-
-        private static void Task01()
-        {
-            ReadPaperInput();
-
-            var input = Console.ReadLine();
-            FoldPaper(input);
-
-            CountDots();
         }
 
         private static void CountDots()
@@ -131,18 +126,16 @@
             }
         }
 
-        private static void ReadPaperInput()
+        private static void ReadPaperInput(List<string> inputLines)
         {
-            while (true)
+            foreach (var inputLine in inputLines)
             {
-                var input = Console.ReadLine();
-
-                if (input == "end")
+                if (inputLine.StartsWith("fold"))
                 {
                     break;
                 }
-
-                var coordinates = input.Split(",");
+                
+                var coordinates = inputLine.Split(",");
                 var x = int.Parse(coordinates[0]); // col
                 var y = int.Parse(coordinates[1]); // row
 

@@ -2,25 +2,24 @@
 {
     public static class Day07
     {
-        public static void Task02()
+        public static void Task01(string input)
         {
-            var input = Console.ReadLine()
+            var inputArr = input
                 .Split(",", StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse)
                 .ToArray();
 
-            var minPosition = input.Min();
-            var maxPosition = input.Max();
+            var minPosition = inputArr.Min();
+            var maxPosition = inputArr.Max();
             var minFuel = int.MaxValue;
 
             for (int position = minPosition; position <= maxPosition; position++)
             {
                 var fuel = 0;
 
-                for (int i = 0; i < input.Length; i++)
+                for (int i = 0; i < inputArr.Length; i++)
                 {
-                    var distance = Math.Abs(input[i] - position);
-                    fuel += (1 + distance) * distance / 2;
+                    fuel += Math.Abs(inputArr[i] - position);
                 }
 
                 if (fuel < minFuel)
@@ -32,24 +31,25 @@
             Console.WriteLine("Min Fuel: " + minFuel);
         }
 
-        public static void Task01()
+        public static void Task02(string input)
         {
-            var input = Console.ReadLine()
+            var inputArr = input
                 .Split(",", StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse)
                 .ToArray();
 
-            var minPosition = input.Min();
-            var maxPosition = input.Max();
+            var minPosition = inputArr.Min();
+            var maxPosition = inputArr.Max();
             var minFuel = int.MaxValue;
 
             for (int position = minPosition; position <= maxPosition; position++)
             {
                 var fuel = 0;
 
-                for (int i = 0; i < input.Length; i++)
+                for (int i = 0; i < inputArr.Length; i++)
                 {
-                    fuel += Math.Abs(input[i] - position);
+                    var distance = Math.Abs(inputArr[i] - position);
+                    fuel += (1 + distance) * distance / 2;
                 }
 
                 if (fuel < minFuel)

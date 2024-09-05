@@ -2,21 +2,61 @@
 {
     public static class Day10
     {
-        public static void Task02()
+        public static void Task01(string input)
         {
-            var parenthesis = new List<string>();
+            var parenthesis = input.Split(Environment.NewLine).ToList();
 
-            while (true)
+            var points = new Dictionary<char, int>
             {
-                var input = Console.ReadLine();
+                { ')', 3 },
+                { ']', 57 },
+                { '}', 1197 },
+                { '>', 25137 },
+            };
 
-                if (input == "end")
+            var score = 0;
+
+            for (int line = 0; line < parenthesis.Count; line++)
+            {
+                var openingBrackets = new Stack<char>();
+
+                for (int i = 0; i < parenthesis[line].Length; i++)
                 {
-                    break;
-                }
+                    var bracket = parenthesis[line][i];
 
-                parenthesis.Add(input);
+                    if (bracket == '('
+                        || bracket == '['
+                        || bracket == '{'
+                        || bracket == '<')
+                    {
+                        openingBrackets.Push(bracket);
+                    }
+                    else
+                    {
+                        var lastOpeningBracket = openingBrackets.Pop();
+
+                        if ((bracket == ')' && lastOpeningBracket != '(')
+                            || (bracket == ']' && lastOpeningBracket != '[')
+                            || (bracket == '}' && lastOpeningBracket != '{')
+                            || (bracket == '>' && lastOpeningBracket != '<'))
+                        {
+                            score += points[bracket];
+                            break;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                }
             }
+
+            Console.WriteLine("Score: " + score);
+        }
+
+        public static void Task02(string input)
+        {
+            var parenthesis = input.Split(Environment.NewLine).ToList();
 
             var points = new Dictionary<char, int>
             {
@@ -101,70 +141,6 @@
                 .Skip((scores.Count - 1) / 2)
                 .Take(1)
                 .ToList()[0];
-
-            Console.WriteLine("Score: " + score);
-        }
-
-        public static void Task01()
-        {
-            var parenthesis = new List<string>();
-
-            while (true)
-            {
-                var input = Console.ReadLine();
-
-                if (input == "end")
-                {
-                    break;
-                }
-
-                parenthesis.Add(input);
-            }
-
-            var points = new Dictionary<char, int>
-            {
-                { ')', 3 },
-                { ']', 57 },
-                { '}', 1197 },
-                { '>', 25137 },
-            };
-
-            var score = 0;
-
-            for (int line = 0; line < parenthesis.Count; line++)
-            {
-                var openingBrackets = new Stack<char>();
-
-                for (int i = 0; i < parenthesis[line].Length; i++)
-                {
-                    var bracket = parenthesis[line][i];
-
-                    if (bracket == '('
-                        || bracket == '['
-                        || bracket == '{'
-                        || bracket == '<')
-                    {
-                        openingBrackets.Push(bracket);
-                    }
-                    else
-                    {
-                        var lastOpeningBracket = openingBrackets.Pop();
-
-                        if ((bracket == ')' && lastOpeningBracket != '(')
-                            || (bracket == ']' && lastOpeningBracket != '[')
-                            || (bracket == '}' && lastOpeningBracket != '{')
-                            || (bracket == '>' && lastOpeningBracket != '<'))
-                        {
-                            score += points[bracket];
-                            break;
-                        }
-                        else
-                        {
-                            continue;
-                        }
-                    }
-                }
-            }
 
             Console.WriteLine("Score: " + score);
         }

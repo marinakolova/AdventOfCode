@@ -5,9 +5,21 @@
         private static int[][] octopuses;
         private static int flashes;
 
-        public static void Task02()
+        public static void Task01(string input)
         {
-            octopuses = ReadInput();
+            octopuses = ReadInput(input.Split(Environment.NewLine).ToList());
+
+            for (int step = 1; step <= 100; step++)
+            {
+                PerformStep();
+            }
+
+            Console.WriteLine("Flashes: " + flashes);
+        }
+
+        public static void Task02(string input)
+        {
+            octopuses = ReadInput(input.Split(Environment.NewLine).ToList());
             var step = 0;
 
             while (true)
@@ -32,18 +44,6 @@
                     break;
                 }
             }
-        }
-
-        public static void Task01()
-        {
-            octopuses = ReadInput();
-
-            for (int step = 1; step <= 100; step++)
-            {
-                PerformStep();
-            }
-
-            Console.WriteLine("Flashes: " + flashes);
         }
 
         private static void PerformStep()
@@ -180,18 +180,18 @@
             }
         }
 
-        private static int[][] ReadInput()
+        private static int[][] ReadInput(List<string> inputLines)
         {
             var grid = new int[10][];
 
             for (int row = 0; row < 10; row++)
             {
                 grid[row] = new int[10];
-                var input = Console.ReadLine();
+                var inputLine = inputLines[row];
 
                 for (int col = 0; col < 10; col++)
                 {
-                    grid[row][col] = int.Parse(input[col].ToString());
+                    grid[row][col] = int.Parse(inputLine[col].ToString());
                 }
             }
 

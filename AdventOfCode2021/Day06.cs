@@ -2,9 +2,9 @@
 {
     public static class Day06
     {
-        public static void Task02()
+        public static void Task02(string input)
         {
-            var fishes = Console.ReadLine()
+            var fishes = input
                 .Split(",", StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse)
                 .ToList();
@@ -26,9 +26,9 @@
             Console.WriteLine($"Number of fishes after {days} days: {fishesByTimer.Sum()}");
         }
 
-        public static void Task01()
+        public static void Task01(string input)
         {
-            var fishes = Console.ReadLine()
+            var fishes = input
                 .Split(",", StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse)
                 .ToList();

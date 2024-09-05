@@ -6,21 +6,30 @@
         private static Dictionary<char, Dictionary<char, char>> pairInsertions;
         private static Dictionary<char, int> charCounts;
 
-        public static void Task02()
+        public static void Task01(string input)
         {
-            var polymer = Console.ReadLine();
+            var inputLines = input.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries).ToList();
+
+            ReadTemplate(inputLines[0]);
+            inputLines.RemoveAt(0);
+
+            ReadPairInsertions(inputLines);
+            PerformInsertions(10);
+            CountChars();
+            PrintResult();
+        }
+
+        public static void Task02(string input)
+        {
+            var inputLines = input.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries).ToList();
+
+            var polymer = inputLines[0];
             var generatedElement = new Dictionary<string, string>();
 
-            while (true)
+            inputLines.RemoveAt(0);
+            foreach (var inputLine in inputLines)
             {
-                var input = Console.ReadLine();
-
-                if (input == "end")
-                {
-                    break;
-                }
-
-                var inputParts = input.Split(" -> ");
+                var inputParts = inputLine.Split(" -> ");
                 var molecule = inputParts[0];
                 var element = inputParts[1];
 
@@ -55,15 +64,6 @@
             elementCounts[polymer.Last()]++;
 
             Console.WriteLine("Result: " + (elementCounts.Values.Max() - elementCounts.Values.Min()));
-        }
-
-        public static void Task01()
-        {
-            ReadTemplate();
-            ReadPairInsertions();
-            PerformInsertions(10);
-            CountChars();
-            PrintResult();
         }
 
         private static void PrintResult()
@@ -114,20 +114,13 @@
             }
         }
 
-        private static void ReadPairInsertions()
+        private static void ReadPairInsertions(List<string> inputLines)
         {
             pairInsertions = new Dictionary<char, Dictionary<char, char>>();
 
-            while (true)
+            foreach (var inputLine in inputLines)
             {
-                var input = Console.ReadLine();
-
-                if (input == "end")
-                {
-                    break;
-                }
-
-                var inputParts = input.Split(" -> ");
+                var inputParts = inputLine.Split(" -> ");
                 var firstChar = inputParts[0][0];
                 var secondChar = inputParts[0][1];
                 var insertionChar = inputParts[1][0];
@@ -140,14 +133,13 @@
             }
         }
 
-        private static void ReadTemplate()
+        private static void ReadTemplate(string inputLine)
         {
             template = new List<char>();
 
-            var input = Console.ReadLine();
-            for (int i = 0; i < input.Length; i++)
+            for (int i = 0; i < inputLine.Length; i++)
             {
-                template.Add(input[i]);
+                template.Add(inputLine[i]);
             }
         }
     }

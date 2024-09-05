@@ -2,22 +2,32 @@
 {
     public static class Day01
     {
-        public static void Task02()
+        public static void Task01(string input)
         {
-            var numbers = new List<int>();
+            var numbers = input.Split(Environment.NewLine).Select(int.Parse).ToArray();
+
             var largerCount = 0;
+            var previous = numbers[0];
 
-            while (true)
+            for (var i = 1; i < numbers.Length; i++)
             {
-                var input = Console.ReadLine();
+                var current = numbers[i];
 
-                if (input == "end")
+                if (current > previous)
                 {
-                    break;
+                    largerCount++;
                 }
 
-                numbers.Add(int.Parse(input));
+                previous = current;
             }
+
+            Console.WriteLine("Larger Count: " + largerCount);
+        }
+
+        public static void Task02(string input)
+        {
+            var numbers = input.Split(Environment.NewLine).Select(int.Parse).ToList();
+            var largerCount = 0;
 
             var firstWindow = 0;
             var secondWindow = 0;
@@ -53,33 +63,6 @@
                     secondWindow = thirdWindow + numbers[i];
                     thirdWindow = numbers[i];
                 }
-            }
-
-            Console.WriteLine("Larger Count: " + largerCount);
-        }
-
-        public static void Task01()
-        {
-            var largerCount = 0;
-            var previous = int.Parse(Console.ReadLine());
-
-            while (true)
-            {
-                var input = Console.ReadLine();
-
-                if (input == "end")
-                {
-                    break;
-                }
-
-                var current = int.Parse(input);
-
-                if (current > previous)
-                {
-                    largerCount++;
-                }
-
-                previous = current;
             }
 
             Console.WriteLine("Larger Count: " + largerCount);
