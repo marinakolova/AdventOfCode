@@ -50,14 +50,21 @@
         private static List<Directory> directories = new List<Directory>();
         private static Stack<Directory> currentLocation = new Stack<Directory>();
 
-        public static void Task01()
+        public static void Task01(string input)
         {
-            // removed first line of original input which was: "$ cd /"
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
+            // first line of input is: "$ cd /"
             var root = new Directory("/");
             currentLocation.Push(root);
 
-            // reads remaining input with added last line: "end"
-            ReadInput();
+            // read next lines of input
+            var queue = new Queue<string>();
+            for (int i = 1; i < inputLines.Count; i++)
+            {
+                queue.Enqueue(inputLines[i]);
+            }
+            ReadInput(queue);
             directories.Add(root);
 
             var totalSizeOfDirsBelow100000 = 0;
@@ -73,14 +80,21 @@
             Console.WriteLine(totalSizeOfDirsBelow100000);
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
-            // removed first line of original input which was: "$ cd /"
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
+            // first line of input is: "$ cd /"
             var root = new Directory("/");
             currentLocation.Push(root);
 
-            // reads remaining input with added last line: "end"
-            ReadInput();
+            // read next lines of input
+            var queue = new Queue<string>();
+            for (int i = 1; i < inputLines.Count; i++)
+            {
+                queue.Enqueue(inputLines[i]);
+            }
+            ReadInput(queue);
             directories.Add(root);
 
             var totalSpace = 70000000;
@@ -104,10 +118,10 @@
             Console.WriteLine(smallest);
         }
 
-        private static void ReadInput()
+        private static void ReadInput(Queue<string> inputLines)
         {            
-            var line = Console.ReadLine().ToString();
-            while (line != "end")
+            var line = inputLines.Dequeue();
+            while (inputLines.Count > 0)
             {
                 var lineParts = line.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
 
@@ -127,16 +141,21 @@
                             currentLocation.Push(currentLocation.Peek().Directories.First(dir => dir.Name == goTo));
                         }
 
-                        line = Console.ReadLine().ToString();
+                        line = inputLines.Dequeue();
                         continue;
                     }
                     else if (lineParts[1] == "ls") // list
                     {
                         while (true)
                         {
-                            line = Console.ReadLine().ToString();
+                            if (inputLines.Count == 0)  // new command
+                            {
+                                break;
+                            }
 
-                            if (line == "end" || line.StartsWith("$"))  // new command
+                            line = inputLines.Dequeue();
+
+                            if (line.StartsWith("$"))  // new command
                             {
                                 break;
                             }

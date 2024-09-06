@@ -30,17 +30,12 @@ namespace AdventOfCode2022
             { 9, new Stack<char>(new List<char> { 'D', 'R', 'S', 'T', 'J' }) },
         };
 
-        public static void Task01()
+        public static void Task01(string input)
         {
-            while (true)
+            var inputLines = input.Split(Environment.NewLine).Skip(10).ToList();
+
+            foreach (var step in inputLines)
             {
-                var step = Console.ReadLine();
-
-                if (step == "end")
-                {
-                    break;
-                }
-
                 var instruction = step.Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
                 var count = int.Parse(instruction[1]);
@@ -57,17 +52,12 @@ namespace AdventOfCode2022
             PrintResult();
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
-            while (true)
+            var inputLines = input.Split(Environment.NewLine).Skip(10).ToList();
+
+            foreach (var step in inputLines)
             {
-                var step = Console.ReadLine();
-
-                if (step == "end")
-                {
-                    break;
-                }
-
                 var instruction = step.Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
                 var count = int.Parse(instruction[1]);

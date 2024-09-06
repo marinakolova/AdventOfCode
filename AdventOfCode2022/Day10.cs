@@ -2,9 +2,9 @@
 {
     public static class Day10
     {
-        public static void Task01()
+        public static void Task01(string input)
         {
-            var instructions = ReadInput();
+            var instructions = ReadInput(input.Split(Environment.NewLine).ToList());
 
             var xRegister = 1;
             var signalStrengths = new List<int>();
@@ -25,9 +25,9 @@
             Console.WriteLine(signalStrengths.Sum());
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
-            var instructions = ReadInput();
+            var instructions = ReadInput(input.Split(Environment.NewLine).ToList());
 
             var crt = new List<List<char>>
             {
@@ -120,18 +120,11 @@
             // RUAKHBEK
         }
 
-        private static Queue<int> ReadInput()
+        private static Queue<int> ReadInput(List<string> inputLines)
         {
             var instructions = new Queue<int>();
-            while (true)
+            foreach (var instruction in inputLines)
             {
-                var instruction = Console.ReadLine().ToString();
-
-                if (instruction == "end") // added line "end" at the end of the original input
-                {
-                    break;
-                }
-
                 if (instruction.StartsWith("addx"))
                 {
                     var instrArr = instruction.Split(" ").ToArray();

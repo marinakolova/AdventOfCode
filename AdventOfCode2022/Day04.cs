@@ -2,19 +2,14 @@
 {
     public static class Day04
     {
-        public static void Task01()
+        public static void Task01(string input)
         {
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
             var fullOverlapsCount = 0;
 
-            while (true)
+            foreach (var pair in inputLines)
             {
-                var pair = Console.ReadLine().ToString();
-
-                if (pair == "end")
-                {
-                    break;
-                }
-
                 var assignments = pair.Split(",");
                 var firstAssign = assignments[0].Split("-").Select(int.Parse).ToArray();
                 var secondAssign = assignments[1].Split("-").Select(int.Parse).ToArray();
@@ -29,19 +24,14 @@
             Console.WriteLine(fullOverlapsCount);
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
             var overlapsCount = 0;
 
-            while (true)
+            foreach (var pair in inputLines)
             {
-                var pair = Console.ReadLine().ToString();
-
-                if (pair == "end")
-                {
-                    break;
-                }
-
                 var assignments = pair.Split(",");
                 var firstAssign = assignments[0].Split("-").Select(int.Parse).ToArray();
                 var secondAssign = assignments[1].Split("-").Select(int.Parse).ToArray();

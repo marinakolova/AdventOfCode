@@ -2,20 +2,15 @@
 {
     public static class Day01
     {
-        public static void Task01()
+        public static void Task01(string input)
         {
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
             var current = 0;
             var list = new List<int>();
 
-            while (true)
+            foreach (var line in inputLines)
             {
-                var line = Console.ReadLine();
-
-                if (line == "end")
-                {
-                    break;
-                }
-
                 if (!string.IsNullOrEmpty(line))
                 {
                     current += int.Parse(line);
@@ -26,23 +21,20 @@
                     current = 0;
                 }
             }
+            list.Add(current);
 
             Console.WriteLine(list.Max());
         }
-        public static void Task02()
+
+        public static void Task02(string input)
         {
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
             var current = 0;
             var list = new List<int>();
 
-            while (true)
+            foreach (var line in inputLines)
             {
-                var line = Console.ReadLine();
-
-                if (line == "end")
-                {
-                    break;
-                }
-
                 if (!string.IsNullOrEmpty(line))
                 {
                     current += int.Parse(line);
@@ -53,6 +45,7 @@
                     current = 0;
                 }
             }
+            list.Add(current);
 
             var first = list.Max();
             list.Remove(first);

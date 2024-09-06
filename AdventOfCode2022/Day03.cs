@@ -2,19 +2,14 @@
 {
     public static class Day03
     {
-        public static void Task01()
+        public static void Task01(string input)
         {
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
             var prioritiesSum = 0;
 
-            while (true)
+            foreach (var rucksack in inputLines)
             {
-                var rucksack = Console.ReadLine().ToString();
-
-                if (rucksack == "end")
-                {
-                    break;
-                }
-
                 var compartment1 = new HashSet<char>();
                 var compartment2 = new List<char>();
 
@@ -47,21 +42,9 @@
             Console.WriteLine(prioritiesSum);
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
-            var rucksacks = new List<string>();
-
-            while (true)
-            {
-                var rucksack = Console.ReadLine().ToString();
-
-                if (rucksack == "end")
-                {
-                    break;
-                }
-
-                rucksacks.Add(rucksack);
-            }
+            var rucksacks = input.Split(Environment.NewLine).ToList();
 
             var prioritiesSum = 0;
 

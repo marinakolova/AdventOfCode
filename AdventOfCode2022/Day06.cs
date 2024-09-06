@@ -2,20 +2,18 @@
 {
     public static class Day06
     {
-        public static void Task01()
+        public static void Task01(string input)
         {
-            FindMarker(4);
+            FindMarker(input, 4);
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
-            FindMarker(14);
+            FindMarker(input, 14);
         }
 
-        private static void FindMarker(int charsCount)
+        private static void FindMarker(string signal, int charsCount)
         {
-            var signal = Console.ReadLine().ToString();
-
             for (int i = charsCount; i < signal.Length; i++)
             {
                 var uniqueChars = new HashSet<char>();

@@ -2,7 +2,7 @@
 {
     public static class Day02
     {
-        public static void Task01()
+        public static void Task01(string input)
         {
             var shapesScores = new Dictionary<char, int>
             {
@@ -25,17 +25,12 @@
                 { "C Z", 3 }, // scissors - scissors -> draw
             };
 
+            var games = input.Split(Environment.NewLine).ToList();
+
             var totalScore = 0;
 
-            while (true)
+            foreach (var game in games)
             {
-                var game = Console.ReadLine();
-
-                if (game == "end")
-                {
-                    break;
-                }
-
                 totalScore += gameScores[game];
                 totalScore += shapesScores[game[^1]];
             }
@@ -43,7 +38,7 @@
             Console.WriteLine(totalScore);
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
             // A - rock - 1
             // B - paper - 2
@@ -68,17 +63,12 @@
                 { "C Z", 7 }, // scissors - rock -> win -> 1+6 = 7
             };
 
+            var games = input.Split(Environment.NewLine).ToList();
+
             var totalScore = 0;
 
-            while (true)
+            foreach (var game in games)
             {
-                var game = Console.ReadLine();
-
-                if (game == "end")
-                {
-                    break;
-                }
-
                 totalScore += gameScores[game];
             }
 

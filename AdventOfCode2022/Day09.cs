@@ -9,7 +9,7 @@
             public int Col { get; set; }
         }
 
-        public static void Task01()
+        public static void Task01(string input)
         {
             var head = new Position { Row = 0, Col = 0 };
             var tail = new Position { Row = 0, Col = 0 };
@@ -19,15 +19,10 @@
                 (0, 0)
             };
 
-            while (true)
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
+            foreach (var instruction in inputLines)
             {
-                var instruction = Console.ReadLine().ToString();
-
-                if (instruction == "end") // added line "end" at the end of the original input
-                {
-                    break;
-                }
-
                 var motion = instruction.Split(' ');
                 var direction = motion[0];
                 var steps = int.Parse(motion[1]);
@@ -92,7 +87,7 @@
             Console.WriteLine(tailPositions.Count);
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
             var knots = new List<Position>
             {
@@ -113,15 +108,10 @@
                 (0, 0)
             };
 
-            while (true)
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
+            foreach (var instruction in inputLines)
             {
-                var instruction = Console.ReadLine().ToString();
-
-                if (instruction == "end") // added line "end" at the end of the original input
-                {
-                    break;
-                }
-
                 var motion = instruction.Split(' ');
                 var direction = motion[0];
                 var steps = int.Parse(motion[1]);

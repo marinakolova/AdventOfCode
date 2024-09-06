@@ -2,7 +2,7 @@
 {
     public static class Day11
     {
-        public static void Task01()
+        public static void Task01() // input hardcoded into the solution
         {
             var monkeyItems = GetMonkeysItems();
             var inspectedItems = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -201,7 +201,7 @@
             Console.WriteLine(result);
         }
 
-        public static void Task02()
+        public static void Task02() // input hardcoded into the solution
         {
             var monkeysItems = GetMonkeysItems();
             var inspectedItems = new List<long>() { 0, 0, 0, 0, 0, 0, 0, 0 };

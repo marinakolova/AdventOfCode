@@ -4,9 +4,9 @@ namespace AdventOfCode2022
 {
     public static class Day08
     {
-        public static void Task01()
+        public static void Task01(string input)
         {
-            var forest = ReadInput();
+            var forest = ReadInput(input.Split(Environment.NewLine).ToList());
             var length = forest[0].Count;
 
             var visible = new HashSet<(int x, int y)>();
@@ -42,9 +42,9 @@ namespace AdventOfCode2022
             Console.WriteLine(visible.Count);
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
-            var forest = ReadInput();
+            var forest = ReadInput(input.Split(Environment.NewLine).ToList());
             var length = forest[0].Count;
 
             var highestScenicScore = 0;
@@ -117,16 +117,16 @@ namespace AdventOfCode2022
             Console.WriteLine(highestScenicScore);
         }
 
-        private static List<List<int>> ReadInput()
+        private static List<List<int>> ReadInput(List<string> inputLines)
         {
             var forest = new List<List<int>> { new List<int>() };
 
-            var firstRow = Console.ReadLine().ToString().ToCharArray().Select(x => int.Parse(x.ToString())).ToList();
+            var firstRow = inputLines[0].ToCharArray().Select(x => int.Parse(x.ToString())).ToList();
             forest[0].AddRange(firstRow);
 
             for (int i = 1; i < firstRow.Count; i++)
             {
-                var row = Console.ReadLine().ToString().ToCharArray().Select(x => int.Parse(x.ToString())).ToList();
+                var row = inputLines[i].ToCharArray().Select(x => int.Parse(x.ToString())).ToList();
                 forest.Add(new List<int>());
                 forest[i].AddRange(row);
             }

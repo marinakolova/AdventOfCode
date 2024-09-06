@@ -2,10 +2,6 @@
 {
     public static class Day12
     {
-        // used when reading the input from the Console in ReadInput()
-        // example input is 5 lines, should change the value here for testing with the example
-        private static int inputLinesCount = 41;
-
         private static char[,] matrix;
         private static Dictionary<(int, int), Dictionary<(int, int), char>> graph;
         private static (int x, int y) start;
@@ -14,9 +10,9 @@
         // for the second task
         private static List<(int x, int y)> possibleStartingPoints = new List<(int x, int y)>();        
 
-        public static void Task01()
+        public static void Task01(string input)
         {
-            ReadInput();
+            ReadInput(input.Split(Environment.NewLine).ToList());
             CreateGraph();
             
             var result = Dijkstra();
@@ -24,9 +20,9 @@
             Console.WriteLine(result);
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
-            ReadInput();
+            ReadInput(input.Split(Environment.NewLine).ToList());
             CreateGraph();
 
             var result = int.MaxValue;
@@ -198,21 +194,21 @@
             }
         }
 
-        private static void ReadInput()
+        private static void ReadInput(List<string> inputLines)
         {
-            var input = Console.ReadLine().ToString();
+            var line = inputLines[0];
 
-            matrix = new char[inputLinesCount, input.Length];
-            for (int i = 0; i < input.Length; i++)
+            matrix = new char[inputLines.Count, line.Length];
+            for (int i = 0; i < line.Length; i++)
             {
-                matrix[0, i] = input[i];
+                matrix[0, i] = line[i];
             }
-            for (int row = 1; row < inputLinesCount; row++)
+            for (int row = 1; row < inputLines.Count; row++)
             {
-                input = Console.ReadLine().ToString();
+                line = inputLines[row];
                 for (int col = 0; col < matrix.GetLength(1); col++)
                 {
-                    matrix[row, col] = input[col];
+                    matrix[row, col] = line[col];
                 }
             }
         }
