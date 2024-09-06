@@ -5,29 +5,24 @@ namespace AdventOfCode2023
 {
     public static class Day12
     {
-        public static void Task01()
+        public static void Task01(string input)
         {
-            ReadInputAndPrintResult(1);
+            ReadInputAndPrintResult(input, 1);
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
-            ReadInputAndPrintResult(5);
+            ReadInputAndPrintResult(input, 5);
         }
 
-        private static void ReadInputAndPrintResult(int repeat)
+        private static void ReadInputAndPrintResult(string input, int repeat)
         {
             long sum = 0;
 
-            while (true)
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
+            foreach (var line in inputLines)
             {
-                var line = Console.ReadLine();
-
-                if (line == "end")
-                {
-                    break;
-                }
-
                 var parts = line.Split(" ");
                 var pattern = Unfold(parts[0], '?', repeat);
                 var numString = Unfold(parts[1], ',', repeat);

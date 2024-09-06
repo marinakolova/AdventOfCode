@@ -21,7 +21,7 @@ namespace AdventOfCode2023
 
     public static class Day05
     {
-        public static void Task01()
+        public static void Task01() // reads input from the console with added line "end" at the end
         {
             var seeds = new List<Seed>();
 
@@ -103,7 +103,7 @@ namespace AdventOfCode2023
             }
         }
 
-        public static void Task02()
+        public static void Task02() // reads input from the console with added line "end" at the end
         {
             var ranges = new List<Range>();
 

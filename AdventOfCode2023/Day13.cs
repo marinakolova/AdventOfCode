@@ -4,7 +4,7 @@ namespace AdventOfCode2023
 {
     public static class Day13
     {
-        public static void Task01()
+        public static void Task01() // reads input from the console with added line "end" at the end
         {
             BigInteger sum = 0;
 
@@ -55,11 +55,6 @@ namespace AdventOfCode2023
             }
 
             Console.WriteLine(sum);
-        }
-
-        public static void Task02()
-        {
-            throw new NotImplementedException();
         }
 
         private static List<int> FindReflectionRows(List<string> patternRows)

@@ -11,22 +11,15 @@ namespace AdventOfCode2023
 
     public static class Day08
     {
-        public static void Task01()
+        public static void Task01(string input)
         {
-            var instructions = Console.ReadLine();
-            Console.ReadLine();
+            var inputLines = input.Split(Environment.NewLine).ToList();
+            var instructions = inputLines[0];
 
             var map = new Dictionary<string, Node>();
 
-            while (true)
+            foreach (var line in inputLines.Skip(2))
             {
-                var line = Console.ReadLine();
-
-                if (line == "end")
-                {
-                    break;
-                }
-
                 var split = line.Split(" = (");
                 var nodeKey = split[0];
                 var directions = split[1].Split(", ");
@@ -70,22 +63,15 @@ namespace AdventOfCode2023
             Console.WriteLine(steps);
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
-            var instructions = Console.ReadLine();
-            Console.ReadLine();
+            var inputLines = input.Split(Environment.NewLine).ToList();
+            var instructions = inputLines[0];
 
             var map = new Dictionary<string, Node>();
 
-            while (true)
+            foreach (var line in inputLines.Skip(2))
             {
-                var line = Console.ReadLine();
-
-                if (line == "end")
-                {
-                    break;
-                }
-
                 var split = line.Split(" = (");
                 var nodeKey = split[0];
                 var directions = split[1].Split(", ");

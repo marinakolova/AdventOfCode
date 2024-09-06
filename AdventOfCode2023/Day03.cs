@@ -2,18 +2,15 @@
 {
     public static class Day03
     {
-        public static void Task01()
+        public static void Task01(string input)
         {
             var schema = new List<List<char>>();
             var partNumbersSum = 0;
 
-            while (true)
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
+            foreach (var line in inputLines)
             {
-                var line = Console.ReadLine();
-                if (line == "END")
-                {
-                    break;
-                }
                 var chars = new List<char>();
                 for (int i = 0; i < line.Length; i++)
                 {
@@ -93,18 +90,15 @@
             Console.WriteLine(partNumbersSum);
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
             var schema = new List<List<char>>();
             var gears = new Dictionary<(int,int), List<int>>();
 
-            while (true)
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
+            foreach (var line in inputLines)
             {
-                var line = Console.ReadLine();
-                if (line == "END")
-                {
-                    break;
-                }
                 var chars = new List<char>();
                 for (int i = 0; i < line.Length; i++)
                 {

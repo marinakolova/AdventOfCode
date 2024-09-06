@@ -31,18 +31,18 @@
         private static int loopDistance = 0; // for Task01
         private static List<Tile> loopTiles = new List<Tile>(); // for Task02
 
-        public static void Task01()
+        public static void Task01(string input)
         {
-            ReadInput();
+            ReadInput(input);
             PrepareDirectionsRules();
             FindLoop();
 
             Console.WriteLine(loopDistance / 2);
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
-            ReadInput();
+            ReadInput(input);
             PrepareDirectionsRules();
             FindLoop();
 
@@ -70,17 +70,12 @@
             Console.WriteLine(tilesEnclosedByTheLoop);
         }
 
-        private static void ReadInput()
+        private static void ReadInput(string input)
         {
-            while (true)
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
+            foreach (var line in inputLines)
             {
-                var line = Console.ReadLine();
-
-                if (line == "end")
-                {
-                    break;
-                }
-
                 field.Add(line);
 
                 if (line.Contains('S'))

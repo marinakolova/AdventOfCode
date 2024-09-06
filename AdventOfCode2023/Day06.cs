@@ -4,10 +4,11 @@ namespace AdventOfCode2023
 {
     public static class Day06
     {
-        public static void Task01()
+        public static void Task01(string input)
         {
-            var times = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
-            var distances = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            var inputLines = input.Split(Environment.NewLine).ToList();
+            var times = inputLines[0].Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            var distances = inputLines[1].Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
             var result = 1;
 
@@ -36,10 +37,11 @@ namespace AdventOfCode2023
             Console.WriteLine(result);
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
-            var times = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
-            var distances = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            var inputLines = input.Split(Environment.NewLine).ToList();
+            var times = inputLines[0].Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            var distances = inputLines[1].Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
             var raceTime = BigInteger.Parse(string.Join("", times.Skip(1)));
             var raceDistanceRecord = BigInteger.Parse(string.Join("", distances.Skip(1)));

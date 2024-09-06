@@ -2,7 +2,7 @@
 {
     public static class Day02
     {
-        public static void Task01()
+        public static void Task01(string input)
         {
             var loadedCubes = new Dictionary<string, int>
             {
@@ -12,14 +12,10 @@
             };
             var sumOfPossibleGamesIds = 0;
 
-            while (true)
-            {
-                string line = Console.ReadLine();
-                if (line == "END")
-                {
-                    break;
-                }
+            var inputLines = input.Split(Environment.NewLine).ToList();
 
+            foreach (var line in inputLines)
+            {
                 var gameAndSubsets = line.Split(": ");
                 var game = gameAndSubsets[0].Split();
                 var gameId = int.Parse(game[1]);
@@ -49,18 +45,14 @@
             Console.WriteLine(sumOfPossibleGamesIds);
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
             var powersSum = 0;
 
-            while (true)
-            {
-                string line = Console.ReadLine();
-                if (line == "END")
-                {
-                    break;
-                }
+            var inputLines = input.Split(Environment.NewLine).ToList();
 
+            foreach (var line in inputLines)
+            {
                 var gameAndSubsets = line.Split(": ");
                 var subsets = gameAndSubsets[1].Split("; ");
 

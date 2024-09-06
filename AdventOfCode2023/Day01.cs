@@ -2,18 +2,14 @@
 {
     public static class Day01
     {
-        public static void Task01()
+        public static void Task01(string input)
         {
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
             var sum = 0;
 
-            while (true)
+            foreach (var line in inputLines)
             {
-                var line = Console.ReadLine();
-                if (line == "END")
-                {
-                    break;
-                }
-
                 char firstDigit = 'a';
                 char lastDigit = 'a';
 
@@ -37,7 +33,7 @@
             Console.WriteLine(sum);
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
             var sum = 0;
 
@@ -60,14 +56,10 @@
                 { "eight", '8'},
             };
 
-            while (true)
-            {
-                var line = Console.ReadLine();
-                if (line == "END")
-                {
-                    break;
-                }
+            var inputLines = input.Split(Environment.NewLine).ToList();
 
+            foreach (var line in inputLines)
+            {
                 char firstDigit = 'a';
                 char lastDigit = 'a';
 

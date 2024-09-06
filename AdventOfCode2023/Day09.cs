@@ -4,30 +4,25 @@ namespace AdventOfCode2023
 {
     public static class Day09
     {
-        public static void Task01()
+        public static void Task01(string input)
         {
-            ReadInputAndPrintResult();
+            ReadInputAndPrintResult(input);
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
             var extrapolateBackwards = true;
-            ReadInputAndPrintResult(extrapolateBackwards);
+            ReadInputAndPrintResult(input, extrapolateBackwards);
         }
 
-        private static void ReadInputAndPrintResult(bool extrapolateBackwards = false)
+        private static void ReadInputAndPrintResult(string input, bool extrapolateBackwards = false)
         {
             BigInteger result = 0;
 
-            while (true)
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
+            foreach (var line in inputLines)
             {
-                var line = Console.ReadLine();
-
-                if (line == "end")
-                {
-                    break;
-                }
-
                 var sequences = new List<List<BigInteger>>();
 
                 var history = line.Split().Select(BigInteger.Parse).ToList();

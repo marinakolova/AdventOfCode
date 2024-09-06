@@ -11,9 +11,10 @@ namespace AdventOfCode2023
         private static Dictionary<(int, int), Dictionary<(int, int), int>> graph;
         private static BigInteger shortestPathsSum;
 
-        public static void Task01()
+        public static void Task01(string input)
         {
-            ReadInput();
+            var inputLines = input.Split(Environment.NewLine).ToList();
+            ReadInput(inputLines);
             CreateGraph();
 
             // any rows or columns that contain no galaxies should all actually be twice as big
@@ -31,9 +32,10 @@ namespace AdventOfCode2023
             Console.WriteLine($"shortestPathsSum: {shortestPathsSum}");
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
-            ReadInput();
+            var inputLines = input.Split(Environment.NewLine).ToList();
+            ReadInput(inputLines);
             CreateGraph();
 
             // make each empty row or column one million times larger
@@ -51,19 +53,19 @@ namespace AdventOfCode2023
             Console.WriteLine($"shortestPathsSum: {shortestPathsSum}");
         }
 
-        private static void ReadInput()
+        private static void ReadInput(List<string> inputLines)
         {
-            var input = Console.ReadLine();
+            var line = inputLines[0];
 
-            matrix = new char[input.Length, input.Length];
-            rowsContainGalaxies = new bool[input.Length];
-            colsContainGalaxies = new bool[input.Length];
+            matrix = new char[line.Length, line.Length];
+            rowsContainGalaxies = new bool[line.Length];
+            colsContainGalaxies = new bool[line.Length];
 
             // first row
-            for (int i = 0; i < input.Length; i++)
+            for (int i = 0; i < line.Length; i++)
             {
-                matrix[0, i] = input[i];
-                if (input[i] == '#')
+                matrix[0, i] = line[i];
+                if (line[i] == '#')
                 {
                     rowsContainGalaxies[0] = true;
                     colsContainGalaxies[i] = true;
@@ -73,11 +75,11 @@ namespace AdventOfCode2023
             // next rows
             for (int row = 1; row < matrix.GetLength(0); row++)
             {
-                input = Console.ReadLine();
+                line = inputLines[row];
                 for (int col = 0; col < matrix.GetLength(1); col++)
                 {
-                    matrix[row, col] = input[col];
-                    if (input[col] == '#')
+                    matrix[row, col] = line[col];
+                    if (line[col] == '#')
                     {
                         rowsContainGalaxies[row] = true;
                         colsContainGalaxies[col] = true;

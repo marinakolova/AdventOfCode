@@ -4,19 +4,14 @@ namespace AdventOfCode2023
 {
     public static class Day04
     {
-        public static void Task01()
+        public static void Task01(string input)
         {
             var points = 0;
 
-            while (true)
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
+            foreach (var line in inputLines)
             {
-                var line = Console.ReadLine();
-
-                if (line == "END")
-                {
-                    break;
-                }
-
                 var card = line.Trim().Split(": ", StringSplitOptions.RemoveEmptyEntries);
                 var numbers = card[1].Trim().Split(" | ", StringSplitOptions.RemoveEmptyEntries);
                 var winningNumbers = numbers[0].Trim().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList();
@@ -45,19 +40,14 @@ namespace AdventOfCode2023
             Console.WriteLine(points);
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
             var cards = new List<Card>();
 
-            while (true)
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
+            foreach (var line in inputLines)
             {
-                var line = Console.ReadLine();
-
-                if (line == "END")
-                {
-                    break;
-                }
-
                 var card = line.Trim().Split(": ", StringSplitOptions.RemoveEmptyEntries);
                 var cardId = int.Parse(card[0].Trim().Split(" ", StringSplitOptions.RemoveEmptyEntries)[1]);
                 var numbers = card[1].Trim().Split(" | ", StringSplitOptions.RemoveEmptyEntries);

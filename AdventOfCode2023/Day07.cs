@@ -21,30 +21,25 @@ namespace AdventOfCode2023
 
     public static class Day07
     {
-        public static void Task01()
+        public static void Task01(string input)
         {
-            ReadInputAndPrintResult();
+            ReadInputAndPrintResult(input);
         }
 
-        public static void Task02()
+        public static void Task02(string input)
         {
             bool playWithJokers = true;
-            ReadInputAndPrintResult(playWithJokers);
+            ReadInputAndPrintResult(input, playWithJokers);
         }
 
-        private static void ReadInputAndPrintResult(bool playWithJokers = false)
+        private static void ReadInputAndPrintResult(string input, bool playWithJokers = false)
         {
             var hands = new List<HandOfCards>();
 
-            while (true)
+            var inputLines = input.Split(Environment.NewLine).ToList();
+
+            foreach (var line in inputLines)
             {
-                var line = Console.ReadLine();
-
-                if (line == "end")
-                {
-                    break;
-                }
-
                 var hand = line.Split();
                 var cards = hand[0].ToCharArray().Select(x => DetermineCard(x, playWithJokers)).ToArray();
                 var bid = int.Parse(hand[1]);
