@@ -57,6 +57,11 @@ namespace AdventOfCode2023
             Console.WriteLine(sum);
         }
 
+        public static void Task02(string input)
+        {
+            throw new NotImplementedException();
+        }
+
         private static List<int> FindReflectionRows(List<string> patternRows)
         {
             var reflectionRows = new List<int>();
