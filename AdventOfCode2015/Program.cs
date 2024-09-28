@@ -13,11 +13,11 @@
             //Day03.Task01(File.ReadAllText(@".\input.txt"));
             //Day03.Task02(File.ReadAllText(@".\input.txt"));
 
-            //Day04.Task01(File.ReadAllText(@".\input.txt")); //NotImplemented
-            //Day04.Task02(File.ReadAllText(@".\input.txt")); //NotImplemented
+            //Day04.Task01(File.ReadAllText(@".\input.txt"));
+            //Day04.Task02(File.ReadAllText(@".\input.txt"));
 
-            //Day05.Task01(File.ReadAllText(@".\input.txt")); //NotImplemented
-            //Day05.Task02(File.ReadAllText(@".\input.txt")); //NotImplemented
+            //Day05.Task01(File.ReadAllText(@".\input.txt"));
+            //Day05.Task02(File.ReadAllText(@".\input.txt"));
 
             //Day06.Task01(File.ReadAllText(@".\input.txt")); //NotImplemented
             //Day06.Task02(File.ReadAllText(@".\input.txt")); //NotImplemented
