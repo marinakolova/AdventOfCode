@@ -24,3 +24,33 @@ This repo contains solutions for [Advent of Code](https://adventofcode.com/) in 
 2. Uncomment the task you want to solve in the main method in `Program.cs` for the corresponding year.
 3. Run the project for the corresponding year.
 4. Get the result from the console.
+
+## Progress
+
+|       | 2015         | 2016 | 2017 | 2018 | 2019 | 2020 | 2021         | 2022         | 2023         |
+| ----- | ----         | ---- | ---- | ---- | ---- | ---- | ----         | ----         | ----         |
+| Day01 | :star::star: |      |      |      |      |      | :star::star: | :star::star: | :star::star: |
+| Day02 | :star::star: |      |      |      |      |      | :star::star: | :star::star: | :star::star: |
+| Day03 | :star::star: |      |      |      |      |      | :star::star: | :star::star: | :star::star: |
+| Day04 | :star::star: |      |      |      |      |      | :star::star: | :star::star: | :star::star: |
+| Day05 | :star::star: |      |      |      |      |      | :star::star: | :star::star: | :star::star: |
+| Day06 | :star::star: |      |      |      |      |      | :star::star: | :star::star: | :star::star: |
+| Day07 |              |      |      |      |      |      | :star::star: | :star::star: | :star::star: |
+| Day08 |              |      |      |      |      |      | :star::star: | :star::star: | :star::star: |
+| Day09 |              |      |      |      |      |      | :star::star: | :star::star: | :star::star: |
+| Day10 |              |      |      |      |      |      | :star::star: | :star::star: | :star::star: |
+| Day11 |              |      |      |      |      |      | :star::star: | :star::star: | :star::star: |
+| Day12 |              |      |      |      |      |      | :star::star: | :star::star: | :star::star: |
+| Day13 |              |      |      |      |      |      | :star::star: | :star::star: | :star:       |
+| Day14 |              |      |      |      |      |      | :star::star: |              |              |
+| Day15 |              |      |      |      |      |      | :star:       |              |              |
+| Day16 |              |      |      |      |      |      |              |              |              |
+| Day17 |              |      |      |      |      |      |              |              |              |
+| Day18 |              |      |      |      |      |      |              |              |              |
+| Day19 |              |      |      |      |      |      |              |              |              |
+| Day20 |              |      |      |      |      |      |              |              |              |
+| Day21 |              |      |      |      |      |      |              |              |              |
+| Day22 |              |      |      |      |      |      |              |              |              |
+| Day23 |              |      |      |      |      |      |              |              |              |
+| Day24 |              |      |      |      |      |      |              |              |              |
+| Day25 |              |      |      |      |      |      |              |              |              |
