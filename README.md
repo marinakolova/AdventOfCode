@@ -35,7 +35,7 @@ This repo contains solutions for [Advent of Code](https://adventofcode.com/) in 
 | Day04 | :star::star: |      |      |      |      |      | :star::star: | :star::star: | :star::star: |
 | Day05 | :star::star: |      |      |      |      |      | :star::star: | :star::star: | :star::star: |
 | Day06 | :star::star: |      |      |      |      |      | :star::star: | :star::star: | :star::star: |
-| Day07 |              |      |      |      |      |      | :star::star: | :star::star: | :star::star: |
+| Day07 | :star::star: |      |      |      |      |      | :star::star: | :star::star: | :star::star: |
 | Day08 |              |      |      |      |      |      | :star::star: | :star::star: | :star::star: |
 | Day09 |              |      |      |      |      |      | :star::star: | :star::star: | :star::star: |
 | Day10 |              |      |      |      |      |      | :star::star: | :star::star: | :star::star: |
