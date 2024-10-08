@@ -49,8 +49,8 @@
             //Day15.Task01(File.ReadAllText(@".\input.txt"));
             //Day15.Task02(File.ReadAllText(@".\input.txt"));
 
-            //Day16.Task01(File.ReadAllText(@".\input.txt")); //NotImplemented
-            //Day16.Task02(File.ReadAllText(@".\input.txt")); //NotImplemented
+            //Day16.Task01(File.ReadAllText(@".\input.txt"));
+            //Day16.Task02(File.ReadAllText(@".\input.txt"));
 
             //Day17.Task01(File.ReadAllText(@".\input.txt")); //NotImplemented
             //Day17.Task02(File.ReadAllText(@".\input.txt")); //NotImplemented
