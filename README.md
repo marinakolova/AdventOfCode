@@ -46,7 +46,7 @@ This repo contains solutions for [Advent of Code](https://adventofcode.com/) in 
 | Day15 | :star::star: |      |      |      |      |      | :star:       |              |              |
 | Day16 | :star::star: |      |      |      |      |      |              |              |              |
 | Day17 | :star::star: |      |      |      |      |      |              |              |              |
-| Day18 |              |      |      |      |      |      |              |              |              |
+| Day18 | :star::star: |      |      |      |      |      |              |              |              |
 | Day19 |              |      |      |      |      |      |              |              |              |
 | Day20 |              |      |      |      |      |      |              |              |              |
 | Day21 |              |      |      |      |      |      |              |              |              |
